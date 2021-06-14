@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% set active_page = "recipes" %}
+{% block content %}
+    <div class="card-border row card-panel lime lighten-5">
+        <!-- Page Title -->
+        <h2 class="page-title green-text text-darken-2 center-align brand-logo">
+            Welcome 
+            {% if session.user %}
+                {{ session.user }}!
+            {% else %}
+                Guest!
+            {% endif %}
+        </h2>
+        <p class="center-align"><em>Time to explore what others have curated</em></p>
+        <!-- Search Bar -->
+        <form action="{{ url_for('search') }}" method="GET" class="col s12">
+            <div class="row center-align">
+                <div class="input-field col s12 xl8">
+                    <i class="fas fa-search prefix light-green-text text-darken-2"></i>
+                    <input value="{{ request.args.get('query', '') }}" type="text" name="query" id="query" minlength="1" class="validate">
+                    <label for="query">E.g. 15 min or Chinese food</label>
+                </div>
+                <div class="input-field col s12 xl4">
+                    <a href="{{ url_for('recipes') }}" class="hoverable red btn text-shadow"><i class="fas fa-undo"></i></a>
+                    <button type="submit" class="hoverable green btn text-shadow">
+                        <i class="fas fa-search left"></i>Search
+                    </button>
+                </div>
+            </div>
+        </form>
+        <!-- Filter Buttons -->
+        <div class="row center-align">
+            <div class="col s6 m3 filter-button">
+                <a href="/search?query=breakfast" class="btn-flat light-blue darken-2 white-text text-shadow">Breakfast</a>
+            </div>
+            <div class="col s6 m3 filter-button">
+                <a href="/search?query=lunch" class="btn-flat light-green darken-1 white-text text-shadow">Lunch</a>
+            </div>
+            <div class="col s6 m3 filter-button">
+                <a href="/search?query=dinner" class="btn-flat orange darken-2 white-text text-shadow">Dinner</a>
+            </div>
+            <div class="col s6 m3 filter-button">
+                <a href="/search?query=dessert" class="btn-flat brown darken-1 white-text text-shadow">Dessert</a>
+            </div>
+        </div>
+        {% if recipes|length > 0 %}
+        <!-- List of Recipe Cards -->
+        <div class="row recipe-list">
+            {% for recipe in recipes %}
+                <div class="col s12 m6 l4">
+                    <!-- Individual Recipe Card -->
+                    <div class="card hoverable">
+                        <!-- Card Image -->
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator responsive-img" src="{{ recipe.image }}" alt="Profile image for {{ recipe.recipe_name }}">
+                        </div>
+                        <!-- Card Title -->
+                        <div class="card-content">
+                            <div class="center activator grey-text text-darken-4">
+                                <div class="left-align card-content-text">
+                                    <h6>
+                                        <span class="activator grey-text text-darken-4">{{ recipe.recipe_name }}
+                                        {% if recipe.is_vegetarian == "Yes" %}
+                                            <i class="fas fa-seedling green-text text-lighten-2 tooltipped" data-position="right"
+                                                data-tooltip="Suitable for Vegetarians"></i>
+                                        {% endif %}
+                                        </span>
+                                        <i class="fas fa-ellipsis-v right"></i>
+                                    </h6>
+                                </div>
+                                <!-- Edit and/or View Recipe Buttons -->
+                                <div class="card-buttons">
+                                    <!-- Edit Button -->
+                                    {% if session.user|lower == recipe.recipe_by|lower %}
+                                        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn-small blue-grey darken-1">Edit</a>
+                                    {% endif %}
+                                    <!-- View Recipe Button -->
+                                    <a href="/recipes/{{ recipe._id }}" class="waves-effect waves-light btn-small purple lighten-2">View</a>
+                                </div>
+                                <!-- Type of Meal Icons -->
+                                <div class="meal-icons center">
+                                    {% for meal in recipe.meal_time %}
+                                        {% if meal == "Breakfast" %}
+                                            <i class="fas fa-circle tooltipped breakfast-icon" data-position="bottom"
+                                                data-tooltip="Breakfast"></i>
+                                        {% elif meal == "Lunch" %}
+                                            <i class="fas fa-circle tooltipped lunch-icon" data-position="bottom"
+                                                data-tooltip="Lunch"></i>
+                                        {% elif meal == "Dinner" %}
+                                            <i class="fas fa-circle tooltipped dinner-icon" data-position="bottom"
+                                                data-tooltip="Dinner"></i>
+                                        {% elif meal == "Dessert" %}
+                                            <i class="fas fa-circle tooltipped dessert-icon" data-position="bottom"
+                                                data-tooltip="Dessert"></i>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card Reveal Information -->
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">
+                                <i class="fas fa-times right"></i></span>
+                                <h6>
+                                    {% if recipe.is_vegetarian == "Yes" %}
+                                        <i class="fas fa-seedling green-text text-lighten-2 tooltipped" data-position="left"
+                                            data-tooltip="Suitable for Vegetarians"></i>
+                                    {% endif %}
+                                    {{ recipe.recipe_name }}
+                                </h6>
+                            <p><strong>Cuisine: {{ recipe.cuisine_type }}</strong></p>
+                            <p><i class="fas fa-clock"></i> {{ recipe.cooking_time }} mins (Prep: {{ recipe.prep_time }} mins)</p>
+                            <p>{{ recipe.description }}</p>
+                            <p><em>Recipe by: {{ recipe.recipe_by }}</em></p>
+                            <p><a href="/recipes/{{ recipe._id }}">View Full Recipe</a></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}   
+        </div>
+        {% else %}
+            <!-- No Results Found Message -->
+            <h2 class="page-title red-text text-darken-2 center-align">No Results Found &#9785;</h2>
+        {% endif %}
+    </div>
+{% endblock %}
