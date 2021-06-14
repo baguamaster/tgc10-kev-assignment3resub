@@ -1,0 +1,2 @@
+mongo "mongodb+srv://cluster0.ysrsb.mongodb.net/" --username root
+pw is jbb123

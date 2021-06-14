@@ -1,0 +1,515 @@
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Lato:wght@400;700&display=swap');
+
+/* ------------------------------------------------ GENERAL SPACING/SPECIAL TEXT/HORIZONTAL RULES */
+
+.text-shadow {
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.flash-message h4 {
+    line-height: 2;
+    font-size: 1.5em;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background-image: url("../images/background.jpg");
+    background-attachment: fixed;
+    box-sizing: border-box;
+}
+
+.nav-item:focus {
+    background-color: #27662a;
+}
+
+.brand-logo {
+    font-family: 'Oleo Script', cursive;
+    font-weight: 700;
+}
+
+.page-title {
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 2px 2px 2px #fff;
+    letter-spacing: 2px;
+}
+
+.card-panel {
+    box-sizing: border-box;
+    padding: 10px 24px;
+    margin-bottom: 10px;
+}
+
+.card-border {
+    border: 3px solid #388e3c;
+    background-color: #f9fbe7;
+}
+
+.btn-large, .btn {
+    margin: 5px;
+}
+
+hr.style-eight { /* Glyph, by Harry Roberts <https://css-tricks.com/examples/hrs/> */
+    overflow: visible; /* For IE */
+    padding: 0;
+    border: none;
+    border-top: medium double #388e3c;
+    color: #388e3c;
+    text-align: center;
+}
+hr.style-eight:after { /* Glyph, by Harry Roberts <https://css-tricks.com/examples/hrs/> */
+    content: "§";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: #f9fbe7;
+}
+
+/* ------------------------------------------------ LIST OF RECIPES PAGE (recipes.html) */
+
+.breakfast-icon {
+    color: #0288d1;
+}
+
+.lunch-icon {
+    color: #7cb342;
+}
+
+.dinner-icon {
+    color: #f57c00;
+}
+
+.dessert-icon {
+    color: #6d4c41;
+}
+
+.meal-icons i {
+    margin: 5px;
+}
+
+.meal-icons a:hover {
+    text-decoration: underline;
+}
+
+.filter-button a {
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 0px;
+    width: 95%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: border 100ms ease-out;
+}
+
+.filter-button a:hover {
+    border: 2px solid #000;
+}
+
+.recipe-list {
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.recipe-list .col > .card {
+    box-sizing: border-box;
+    width: 100%;
+    height: 320px;
+    padding: 0px;
+    margin-right: 10px;
+}
+
+.card-image {
+    height: 55%;
+    overflow: hidden;
+}
+
+.card-image img {
+    min-height: 100%;
+    width: auto;
+}
+
+.card .card-content {
+    box-sizing: border-box;
+    height: 45%;
+    padding: 5px 10px
+}
+
+.btn-small {
+    box-sizing: border-box;
+    margin: 10px 5px 5px;
+}
+
+.card-content-text {
+    height: 40px;
+}
+
+.col.s1.remove {
+    box-sizing: border-box;
+    padding-right: 20px;
+}
+
+/* ------------------------------------------------ FULL RECIPE PAGE (full_recipe.html) */
+
+.modal .modal-footer.share-modal-footer {
+    height: 50px !important;
+}
+
+.full-recipe {
+    border: 2px solid #388e3c;
+    background-color: #f9fbe7;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.full-recipe .card-panel {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.full-recipe-title {
+    margin-bottom: 30px;
+    font-weight: 700;
+    z-index: 100;
+}
+
+.full-recipe-title a:hover {
+    text-decoration: underline;
+}
+
+.full-recipe-title h2 {
+    margin: 10px 0px;
+}
+
+.cover-header {
+    max-height: 20rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.cover-header img {
+    width: 100%;
+}
+
+.vegetarian-icon {
+    font-size: 50%;
+    vertical-align: top;
+}
+
+.key-info img {
+    height: 40px;
+    width: auto;
+}
+
+.full-recipe-header {
+    margin-top: 20px;
+}
+
+.key-info {
+    box-sizing: border-box;
+    padding: 0px;
+    border: 2px solid #388e3c;
+    border-radius: 20px;
+    background-color: #e8f5e9;
+    color: #000;
+}
+
+.key-recipe-info {
+    border-bottom: 1px solid #000;
+}
+
+.key-recipe-info a {
+    color: #000;
+}
+
+.key-recipe-info a:hover {
+    text-decoration: underline;
+}
+
+.brand-logo.sub-heading {
+    color: #388e3c;
+}
+
+.step-number {   /* inspired by https://blog.logrocket.com/styling-numbered-lists-with-css-counters/ */
+    margin: 20px 10px 5px 0px;
+    width: 70px;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    background-color:#388e3c;
+    border-radius: 50%;
+    color: #fff;
+    float: left;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+}
+
+/* ------------------------------------------------ ADD NEW / EDIT RECIPE PAGES (new_recipe.html/edit_recipe.html) */
+
+div.method-steps {
+  counter-reset: list-number;
+}
+
+div.method-steps div:before {
+  counter-increment: list-number;
+  content: "Step: " counter(list-number);
+  /* inspired by https://blog.logrocket.com/styling-numbered-lists-with-css-counters/ */
+  margin-bottom: 5px;
+  width: 70px;
+  height: 35px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  background-color:#388e3c;
+  border-radius: 50%;
+  color: #fff;
+  float: left;
+  text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+}
+
+.method-steps > .input-field {
+    margin-top: 0px;
+}
+
+.section-title {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.teaser {
+    font-weight: 700;
+}
+
+.recipe-help-info {
+    box-sizing: border-box;
+    padding: 0px;
+    border: 2px solid #388e3c;
+    border-radius: 20px;
+    background-color: #e8f5e9;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+/* ------------------------------------------------ EDIT RECIPE PAGE ONLY (edit_recipe.html) */
+
+.recipe-to-delete {
+    font-weight: 700;
+}
+
+.modal .modal-header {
+    background-color: #388e3c;
+    box-sizing: border-box;
+}
+
+.modal .modal-header h4 {
+    padding: 10px 0px;
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.big-x {
+    position: relative;
+    color: #fff;
+}
+
+.modal .modal-content {
+    background-color: #f9fbe7;
+    box-sizing: border-box;
+}
+
+.modal-content p {
+    padding: 20px 10px;
+}
+
+.modal .modal-footer {
+    border-radius: 0 0 2px 2px;
+    background-color: #388e3c;
+    padding: 4px 6px;
+    height: 75px;
+    width: 100%;
+    text-align: center;
+}
+
+.modal .modal-footer .btn-large {
+    margin-right: 10px;
+}
+
+hr.delete-recipe {
+    overflow: visible; /* For IE */
+    padding: 0;
+    border: none;
+    border-top: medium double red;
+    color: red;
+    text-align: center;
+}
+hr.delete-recipe:after {
+    content: "Danger Zone";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: #f9fbe7;
+}
+
+#allergens-modal {
+    width: 80vw;
+}
+
+#allergens-modal img {
+    width: 80vw;
+}
+
+#allergens-modal img {
+    max-width: 60%;
+    height: auto;
+}
+
+#allergens-modal .modal-content {
+    padding: 0px;
+}
+
+/* ------------------------------------------------ REGISTER PAGE (register.html) */
+
+.click-to-login {
+    font-weight: 700;
+    margin: 0px;
+}
+
+/* ------------------------------------------------ HEADER & FOOTER ON ALL PAGES (base.html) */
+
+.nav-wrapper .nav-icon {
+    height: 1.5em;
+    width: auto;
+    vertical-align: middle;
+}
+
+.sidenav .brand-logo {
+    margin-bottom: 10px;
+}
+
+.page-footer {
+    background-color: #388e3c;
+}
+
+.page-footer .footer-copyright {
+    background-color: #2e7732;
+}
+
+.page-footer a:hover {
+    text-decoration: underline;
+}
+
+.social-media-icons i {
+    margin-right: 10px;
+    font-size: 1.5em;
+}
+
+/* ------------------------------------------------ SESSION USER PROFILE PAGE (profile.html) */
+
+.profile-header {
+    margin-bottom: 0px;
+}
+
+.profile-button {
+    margin: 10px 0px 20px;
+}
+
+/* ------------------------------------------------ COOKING TOOLS PAGE (cooking_tools.html) */
+
+.greenpan:hover {
+    text-decoration: underline;
+}
+
+.cooking-tools a {
+    color: rgba(0,0,0,0.87);
+}
+
+.cooking-tools a:hover {
+    text-decoration: underline;
+}
+
+.table-header {
+    font-weight: 700;
+}
+
+.cooking-tool-image img {
+    width: 100%;
+}
+
+.cooking-tool-image img.materialboxed:active {
+    width: auto;
+}
+
+.tools-info {
+    box-sizing: border-box;
+    padding: 10px;
+    border: 2px solid #388e3c;
+    border-radius: 20px;
+    background-color: #e8f5e9;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+/* ------------------------------------------------ MEDIA QUERIES */
+
+@media (max-width: 978px) {
+    .container  {
+        padding: 0px;
+        overflow: hidden;
+    }
+
+    .hr {
+        width: 100%;
+    }
+}
+
+@media (max-width: 319px) { /* For Samsung Galaxy Fold */
+    nav .brand-logo.web-logo {
+        font-size: 1.8rem;
+    }
+
+    .row .col {
+        padding: 0px;
+    }
+
+    .social-media-icons {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 280px) {
+    nav .brand-logo.web-logo {
+        font-size: 1.6rem;
+    }
+}
+
+@media (min-width: 489px) {
+    #allergens-modal {
+        max-width: 40rem;
+        max-height: 70%;
+    }
+}
+
+@media (min-width: 601px) {
+    .key-recipe-info.cuisine {
+        border: none;
+    }
+}
+
+@media (max-width: 320px) { /* For Samsung Galaxy Fold & iPhone 5/SE */
+    .recipe-help-info {
+        padding: 10px;
+    }
+
+    .action-button {
+        font-size: 0.9em;
+    }
+}

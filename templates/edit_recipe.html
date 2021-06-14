@@ -1,0 +1,272 @@
+{% extends "base.html" %}
+{% set active_page = "new_recipe" %}
+{% block content %}
+<div class="card-border card-panel lime lighten-5">
+    <!-- Page Title -->
+    <h2 class="page-title green-text text-darken-2 center-align brand-logo">Edit Recipe</h2>
+    <!-- Add a New Recipe Form -->
+    <div class="row">
+        <form class="col s12" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
+            <!-- Recipe Name & Cuisine -->
+            <div class="row">
+                <!-- Recipe Name -->
+                <div class="input-field col s12 m6">
+                    <i class="fas fa-book-open green-text text-darken-2 prefix"></i>
+                    <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50"
+                        value="{{ recipe.recipe_name }}" type="text" class="validate" required>
+                    <label for="recipe_name">Food Name</label>
+                </div>
+                <!-- Type of Cuisine -->
+                <div class="input-field col s12 m6">
+                    <i class="fas fa-globe-africa green-text text-darken-2 prefix"></i>
+                    <input id="cuisine_type" name="cuisine_type" minlength="5" maxlength="30"
+                        value="{{ recipe.cuisine_type }}" type="text" class="validate" required>
+                    <label for="cuisine_type">Cuisine Type</label>
+                </div>
+            </div>
+            <!-- Description of meal -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-pencil-alt green-text text-darken-2 prefix"></i>
+                    <textarea id="description" name="description" class="validate materialize-textarea" minlength="5"
+                        maxlength="100" required>
+                            {{- recipe.description -}}
+                        </textarea>
+                    <label for="description">How would you describe this meal in one sentence?</label>
+                </div>
+            </div>
+            <!-- Extra Key Recipe Information -->
+            <div class="row">
+                <!-- Meal Time -->
+                <div class="input-field col s12 m8">
+                    <i class="fas fa-user-clock green-text text-darken-2 prefix"></i>
+                    <select id="meal_time" name="meal_time" class="validate" multiple required>
+                        <option value="" disabled>Choose Option(s)</option>
+                        <!-- Unpacking the selected options from the database -->
+                        {% for meal in recipe.meal_time %}
+                        <option value="{{ meal }}" selected>{{ meal }}</option>
+                        {% endfor %}
+                        <!-- Adding the remaining unselected options -->
+                        {% if "Breakfast" not in recipe.meal_time %}
+                        <option value="Breakfast">Breakfast</option>
+                        {% endif %}
+                        {% if "Lunch" not in recipe.meal_time %}
+                        <option value="Lunch">Lunch</option>
+                        {% endif %}
+                        {% if "Dinner" not in recipe.meal_time %}
+                        <option value="Dinner">Dinner</option>
+                        {% endif %}
+                        {% if "Dessert" not in recipe.meal_time %}
+                        <option value="Dessert">Dessert</option>
+                        {% endif %}
+                    </select>
+                    <label for="meal_time">Whats the best time to have this meal?</label>
+                </div>
+                <!-- Is Vegetarian checkbox -->
+                <div class="input-field col s12 m4">
+                    <i class="fas fa-seedling green-text text-darken-2 prefix"></i>
+                    <select id="is_vegetarian" name="is_vegetarian" class="validate" required>
+                        <option value="" disabled>Choose Option</option>
+                        {% if recipe.is_vegetarian == "Yes" %}
+                        <option value="Yes" selected>Yes</option>
+                        <option value="No">No</option>
+                        {% else %}
+                        <option value="Yes">Yes</option>
+                        <option value="No" selected>No</option>
+                        {% endif %}
+                    </select>
+                    <label for="is_vegetarian">Is it suitable for Vegetarians?</label>
+                </div>
+                <!-- Servings -->
+                <div class="input-field col s12 m4">
+                    <i class="fas fa-utensils green-text text-darken-2 prefix"></i>
+                    <input id="servings" name="servings" type="number" min="1" value="{{ recipe.servings }}"
+                        class="validate" required>
+                    <label for="servings">Servings</label>
+                </div>
+                <!-- Preparation Time -->
+                <div class="input-field col s12 m4">
+                    <i class="fas fa-clock green-text text-darken-2 prefix"></i>
+                    <input id="prep_time" name="prep_time" type="number" min="0" value="{{ recipe.prep_time }}"
+                        class="validate" required>
+                    <label for="prep_time">Preparation time (mins)</label>
+                </div>
+                <!-- Cooking Time -->
+                <div class="input-field col s12 m4">
+                    <i class="fas fa-stopwatch green-text text-darken-2 prefix"></i>
+                    <input id="cooking_time" name="cooking_time" type="number" min="0" value="{{ recipe.cooking_time }}"
+                        class="validate" required>
+                    <label for="cooking_time">Cooking time (mins)</label>
+                </div>
+            </div>
+            <!-- Visual of the recipe meal -->
+            <div class="row">
+                <div class="col s12 recipe-help-info">
+
+                    <p class="center-align">
+                        Search for a google image of this food item
+                    </p>
+                    <p class="center-align">
+                        To get the image address, right-click on the online image and click "Copy Image Address"; then
+                        you can paste it below.
+                    </p>
+                    <p class="center-align">
+                        If you prefer to upload your own photo: <a href="https://imgbb.com/" target="_blank"> click
+                            here</a> to visit our partner, Imgbb.
+                    </p>
+                    <p class="center-align">
+                        As long as your photo is under 32MB, you will then be given an image address that you can paste
+                        below!
+                    </p>
+                </div>
+                <!-- Link to Image -->
+                <div class="input-field col s12 m6">
+                    <i class="fas fa-image green-text text-darken-2 prefix"></i>
+                    <input id="image" name="image" type="text" class="validate" value="{{ recipe.image }}" required>
+                    <label for="image">Paste your image address here please</label>
+                </div>
+
+                <!-- Recipe Ingredients -->
+                <hr class="section-title style-eight">
+                <h4 class="brand-logo center-align sub-heading">Ingredients</h4>
+                <div class="row">
+                    <div class="col s12">
+                        <ul class="ingredient_items">
+                            {% for ingredient, amount in recipe.ingredients.items() %}
+                            <li>
+                                <div class="input-field col s12 m7">
+                                    <i class="fas fa-pepper-hot green-text text-darken-2 prefix"></i>
+                                    <input id="ingredient_name" name="ingredient_name" minlength="1" maxlength="50"
+                                        type="text" value="{{ ingredient }}" class="validate" required>
+                                    <label for="ingredient_name">Ingredient Name </label>
+                                </div>
+                                <div class="input-field col s10 m3">
+                                    <i class="fas fa-utensil-spoon green-text text-darken-2 prefix"></i>
+                                    <input id="ingredient_amount" name="ingredient_amount" minlength="1" maxlength="50"
+                                        value="{{ amount }}" type="text" class="validate" required>
+                                    <label for="ingredient_amount">Amount </label>
+                                </div>
+                                <span class="input-field col s1">
+                                    <button class="remove red" type="button"><i class="fa fa-times"></i></button>
+                                </span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="col s12 center-align">
+                        <button id="add_ingredient" type="button" class="btn green darken-2 text-shadow">
+                            To Add Another Row
+                        </button>
+                    </div>
+                </div>
+                <!-- Recipe Method -->
+                <hr class="section-title style-eight">
+                <h4 class="brand-logo center-align sub-heading">Method</h4>
+                <div class="row">
+                    <div class="method-steps">
+                        {% for step, method in recipe.method.items() %}
+                        <div class="input-field col s12">
+                            <span class="input-field col s10 m9">
+                                <textarea id="method" name="method" class="validate materialize-textarea"
+                                    required>{{ method }}</textarea>
+                            </span>
+                            <span class="input-field col s1">
+                                <button class="remove red" type="button"><i class="fa fa-times"></i></button>
+                            </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col s12 center-align">
+                        <button id="add_step" type="button" class="btn green darken-2 text-shadow">
+                            To Add Another Step
+                        </button>
+                    </div>
+                </div>
+                <!-- List of Allergens -->
+                <hr class="section-title style-eight">
+                <h4 class="brand-logo center-align sub-heading">Allergens</h4>
+                <div class="row">
+                    <div class="col s12 m8 offset-m2 recipe-help-info">
+                        <p class="center-align">
+                            If there are allegenic elements please state
+                            <span>
+
+                        </p>
+                        <p class="center-align">
+                            <a href="https://www.food.gov.uk/business-guidance/allergen-guidance-for-food-businesses"
+                                target="_blank">Click here for more information.</a>
+                        </p>
+                        <p class="center-align">Put "N/A" if none.</p>
+                    </div>
+                    <!-- Modal Content for the 14 Allergens -->
+                    <div id="allergens-modal" class="modal center-align">
+                        <div class="modal-header">
+                            <h4>There are 14 common Allergenic items to be aware of</h4>
+                        </div>
+                        <div class="modal-content">
+                            <img src="{{ url_for('static', filename='images/list-of-allergens.jpg') }}"
+                                alt="The 14 Allergens as declared by the Food Standards Agency">
+                        </div>
+                        <div class="modal-footer center-align">
+                            <button type="button" class="red btn-large text-shadow modal-close">
+                                Close<i class="fas fa-times-circle right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Allergens User Input -->
+                    <div class="input-field col s11">
+                        <i class="fas fa-allergies green-text text-darken-2 prefix"></i>
+                        <textarea id="allergens" name="allergens" class="validate materialize-textarea" required>
+                        {{- ",".join(recipe.allergens) -}}
+                        </textarea>
+                        <label for="allergens">Separate with commas</label>
+                    </div>
+                </div>
+                <!-- Action Buttons -->
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <!-- Go Back -->
+                        <a href="{{ url_for('recipes') }}" class="action-button btn-large green text-shadow">
+                            Go Back<i class="fas fa-arrow-circle-left right"></i>
+                        </a>
+                        <!-- Submit Button -->
+                        <button type="submit" class="action-button btn-large cyan text-shadow">
+                            Edit Recipe <i class="fas fa-check-circle right"></i>
+                        </button>
+                    </div>
+                </div>
+                <hr class="section-title delete-recipe">
+                <!-- Delete Recipe -->
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <!-- Delete Button -->
+                        <a id="delete-button" class="action-button btn-large red text-shadow modal-trigger"
+                            href="#delete_recipe">
+                            Delete Recipe <i class="fas fa-trash-alt right"></i>
+                        </a>
+                        <!-- "Delete" Modal Structure -->
+                        <div id="delete_recipe" class="modal center-align">
+                            <div class="modal-header">
+                                <h4>Delete Recipe</h4>
+                            </div>
+                            <div class="modal-content">
+                                <h6>Please note that once deleted, it cannot be undone.</h6><br>
+                                <h6>Are you sure you want to delete your recipe for: <span
+                                        class="recipe-to-delete">{{ recipe.recipe_name }}</span>?</h6>
+                            </div>
+                            <div class="modal-footer center-align">
+                                <button type="button" class="blue btn-large text-shadow modal-close">
+                                    No<i class="fas fa-times-circle right"></i>
+                                </button>
+                                <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
+                                    class="modal-close btn-large red text-shadow">
+                                    Yes<i class="fas fa-trash-alt right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
