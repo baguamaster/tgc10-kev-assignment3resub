@@ -12,28 +12,28 @@ from Recipe import Recipe
 
 # Sample Recipe to test without MongoDB
 sample = Recipe(
-    _id = "00001",
-    cuisine_type = "Singaporean",
-    recipe_name = "Chicken Rice",
-    meal_time = ["Lunch"],
-    description = "Rice with Steamed Chicken",
-    servings = 1,
-    is_vegetarian = "No",
-    prep_time = "10",
-    cooking_time = "30",
-    ingredients = {
+    _id="00001",
+    cuisine_type="Singaporean",
+    recipe_name="Chicken Rice",
+    meal_time=["Lunch"],
+    description="Rice with Steamed Chicken",
+    servings=1,
+    is_vegetarian="No",
+    prep_time="10",
+    cooking_time="30",
+    ingredients={
         "Rice": "100g",
         "Chicken": "50g"
     },
-    method = {
+    method={
         "1": "Cook rice",
         "2": "Cook chicken",
         "3": "Plate"
     },
-    allergens = ["Nuts"],
-    image = "https://picsum.photos/200/300",
-    video = "https://www.youtube.com",
-    recipe_by = "John"
+    allergens=["Nuts"],
+    image="https://picsum.photos/200/300",
+    video="https://www.youtube.com",
+    recipe_by="John"
 )
 
 app = Flask(__name__)
@@ -55,7 +55,7 @@ app.secret_key = "SECRET"
 @app.route("/")
 @app.route("/recipes")
 def recipes():
-    recipes=[sample,sample]
+    recipes = [sample, sample]
     # recipes = list(mongo.db.recipes.find())
     # recipes.sort(key=lambda k: k['recipe_name'])
     return render_template("recipes.html", recipes=recipes)
@@ -68,7 +68,7 @@ def recipes():
 
 @app.route("/recipes/<recipe_id>", methods=["GET", "POST"])
 def full_recipe(recipe_id):
-    recipe=sample
+    recipe = sample
     # recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template("full_recipe.html", recipe=recipe)
 
@@ -149,19 +149,19 @@ def login():
         #     {"username": request.form.get("username").lower()})
 
         # if existing_user:
-            # Checking if the hashed password matches the user's input:
-            # if check_password_hash(
-            #     existing_user["password"],
-            #         request.form.get("password")):
-            #     session["user"] = request.form.get("username").lower()
-            #     return redirect(url_for(
-            #             "profile", username=session["user"]))
-            # else:
-            #     # If the invalid password is incorrect then alert user.
-            #     # For security reasons message displays either username
-            #     # or password is incorrect. This minimises brute-forcing.
-            #     flash("Incorrect Username and/or Password")
-            #     return redirect(url_for("login"))
+        # Checking if the hashed password matches the user's input:
+        # if check_password_hash(
+        #     existing_user["password"],
+        #         request.form.get("password")):
+        #     session["user"] = request.form.get("username").lower()
+        #     return redirect(url_for(
+        #             "profile", username=session["user"]))
+        # else:
+        #     # If the invalid password is incorrect then alert user.
+        #     # For security reasons message displays either username
+        #     # or password is incorrect. This minimises brute-forcing.
+        #     flash("Incorrect Username and/or Password")
+        #     return redirect(url_for("login"))
 
         # else:
         #     # If the username does not exist then display the same message
@@ -193,7 +193,7 @@ User Profile Template Rendering
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    recipes=[sample, sample]
+    recipes = [sample, sample]
     # The session user's username is retrieved from MongoDB
     # username = mongo.db.users.find_one(
     #     {"username": session["user"]})["username"]
@@ -211,7 +211,7 @@ Search Functionality
 
 @app.route("/search")
 def search():
-    recipes=[sample]
+    recipes = [sample]
     # query = request.args.get("query", "-minutes -mins")
     # recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
     return render_template("recipes.html", recipes=recipes)
@@ -325,7 +325,7 @@ def edit_recipe(recipe_id):
         # mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
         flash("Recipe Successfully Updated")
 
-    recipe=None
+    recipe = None
     # recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template("edit_recipe.html", recipe=recipe)
 
