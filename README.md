@@ -428,6 +428,9 @@ No issues were found with style.css
 
 2. all .html files in templates was validated using the W3 Nu HTML Validator ([Link](https://validator.w3.org/nu/#file))
 
+![image](static/images/markdownpics/m12.JPG)
+
+
 Many of the Jinja2 syntax were picked up as errors
 
 In order to handle this, each flag was picked out to check if it was truly related to Jinja2 or was an actual error
@@ -439,7 +442,7 @@ Post code fix Response from Nu Html Checker: &quot;Document checking completed. 
 1. Ensure code in app.py complies with PEP8 style guide
 2. This is ensured by making sure no callouts from gitpod python linter are present in app.py and that lines of code in app.py to not exceed 79 Characters
 
-![image](static/images/markdownpics/m8.JPG)
+static
 
 ![](RackMultipart20210617-4-4z6swi_html_8320a29d807bad09.jpg)
 
