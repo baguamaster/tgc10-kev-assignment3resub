@@ -20,7 +20,7 @@ Github version control may be accessed via:
 
 [**https://github.com/baguamaster/tgc10-kev-assignment3resub**](https://github.com/baguamaster/tgc10-kev-assignment3resub)
 
-![image](images/markdownpics/m1.JPG)
+![image](static/images/markdownpics/m1.JPG)
 
 ![](RackMultipart20210617-4-4z6swi_html_801d066a3b4be897.jpg)
 
