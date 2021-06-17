@@ -196,7 +196,7 @@ The use of Flask and Jinja allows pages to pull and display recipe data by likin
 
 The **delete** button is strategically places at the bottom of the edit\_recipe template marked in red. This type of alert is highly visual and acts to draw attention to this function.
 
-![image](static/images/markdownpics/m6.jpg)
+![image](static/images/markdownpics/m6.JPG)
 
 ![](RackMultipart20210617-4-4z6swi_html_648405fe2acfa1d8.png)
 
