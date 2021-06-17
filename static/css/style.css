@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Lato:wght@400;700&display=swap');
 
-/* ------------------------------------------------ GENERAL SPACING/SPECIAL TEXT/HORIZONTAL RULES */
 
 .text-shadow {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
@@ -27,7 +26,7 @@ body {
 }
 
 .brand-logo {
-    font-family: 'Oleo Script';
+    font-family: 'Oleo Script', sans-serif;
     font-weight: 700;
 }
 
@@ -79,19 +78,19 @@ hr.style-eight:after {
 /* ------------------------------------------------ LIST OF RECIPES PAGE (recipes.html) */
 
 .breakfast-icon {
-    color: #82d102;
+    color: orange;
 }
 
 .lunch-icon {
-    color: #b37e42;
+    color: purple;
 }
 
 .dinner-icon {
-    color: #f57c00;
+    color: greenyellow;
 }
 
 .dessert-icon {
-    color: #6d4157;
+    color: blue;
 }
 
 .meal-icons i {
@@ -159,7 +158,7 @@ hr.style-eight:after {
     padding-right: 20px;
 }
 
-/* ------------------------------------------------ STYLING FOR FULL RECIPE PAGE (full_recipe.html) */
+/* -----------------------------CSTYLING FOR FULL RECIPE PAGE (full_recipe.html) */
 
 .modal .modal-footer.share-modal-footer {
     height: 50px !important;
@@ -384,14 +383,14 @@ hr.delete-recipe:after {
     padding: 0px;
 }
 
-/* ------------------------------------------------ REGISTER PAGE (register.html) */
+/* -----------------------------------------STYLING FOR REGISTERING PAGE (register.html) */
 
 .click-to-login {
     font-weight: 700;
     margin: 0px;
 }
 
-/* ------------------------------------------------ HEADER & FOOTER ON ALL PAGES (base.html) */
+/* ----------------------------------------STYLING FOR  HEADER & FOOTER ON ALL PAGES (base.html) */
 
 .nav-wrapper .nav-icon {
     height: 1.5em;
@@ -420,7 +419,7 @@ hr.delete-recipe:after {
     font-size: 1.5em;
 }
 
-/* ------------------------------------------------ SESSION USER PROFILE PAGE (profile.html) */
+/* --------------------------------------STYLING FOR PROFILE PAGE (profile.html) */
 
 .profile-header {
     margin-bottom: 0px;
@@ -430,31 +429,6 @@ hr.delete-recipe:after {
     margin: 10px 0px 20px;
 }
 
-/* ------------------------------------------------ COOKING TOOLS PAGE (cooking_tools.html) */
-
-.greenpan:hover {
-    text-decoration: underline;
-}
-
-.cooking-tools a {
-    color: rgba(0, 0, 0, 0.87);
-}
-
-.cooking-tools a:hover {
-    text-decoration: underline;
-}
-
-.table-header {
-    font-weight: 700;
-}
-
-.cooking-tool-image img {
-    width: 100%;
-}
-
-.cooking-tool-image img.materialboxed:active {
-    width: auto;
-}
 
 }
 
