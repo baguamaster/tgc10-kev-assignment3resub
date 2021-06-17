@@ -21,7 +21,7 @@ load_dotenv()
 #     cuisine_type = "Nigerian",
 #     recipe_name = "Fried Plantain",
 #     meal_time = ["Breakfast", "Lunch", "Dinner"],
-#     description = "A very delicious global dish cooked wherever plantains grow.",
+#     description = "A global dish cooked wherever plantains grow.",
 #     servings = "4",
 #     is_vegetarian = "Yes",
 #     prep_time = "2",
@@ -36,7 +36,7 @@ load_dotenv()
 #         "3": "Plate"
 #     },
 #     allergens = ["Plantain"],
-#     image = "https://static01.nyt.com/images/2019/10/13/dining/kwr-maduros/kwr-maduros-articleLarge.jpg",
+#     image = "https://static01.nyt.com/images/2019/10/13/articleLarge.jpg",
 #     video = "https://www.youtube.com/watch?v=sQJ9ioyNhEA",
 #     recipe_by = "jesse"
 # )
@@ -53,6 +53,7 @@ mongo = PyMongo(app)
 `All Recipes` Template Rendering
 '''
 
+
 @app.route("/")
 @app.route("/recipes")
 def recipes():
@@ -65,6 +66,7 @@ def recipes():
 `Full Recipe` Template Rendering
 '''
 
+
 @app.route("/recipes/<recipe_id>", methods=["GET", "POST"])
 def full_recipe(recipe_id):
     # recipe=sample
@@ -73,7 +75,9 @@ def full_recipe(recipe_id):
 
 '''
 Register User Functionality & Template Rendering
+
 '''
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -121,6 +125,7 @@ def register():
 '''
 User Login Functionality & Template Rendering
 '''
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -171,6 +176,7 @@ def login():
 User Logout Functionality
 '''
 
+
 @app.route("/logout")
 def logout():
     # Remove user from the browser session cookies:
@@ -181,6 +187,7 @@ def logout():
 '''
 User Profile Template Rendering
 '''
+
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
@@ -198,6 +205,7 @@ def profile(username):
 Search Functionality
 '''
 
+
 @app.route("/search")
 def search():
     # recipes=[sample]
@@ -208,6 +216,7 @@ def search():
 '''
 `Add New Recipe` Functionality & Template Rendering
 '''
+
 
 @app.route("/new_recipe", methods=["GET", "POST"])
 def new_recipe():
@@ -262,6 +271,7 @@ def new_recipe():
 '''
 `Edit Recipe` Functionality & Template Rendering
 '''
+
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
@@ -318,6 +328,7 @@ def edit_recipe(recipe_id):
 `Delete Recipe` Functionality
 '''
 
+
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
@@ -327,6 +338,7 @@ def delete_recipe(recipe_id):
 '''
 `Cooking Tools` Template Rendering
 '''
+
 
 @app.route("/cooking_tools")
 def cooking_tools():
