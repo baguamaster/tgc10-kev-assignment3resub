@@ -72,7 +72,7 @@ Member Story 5:
 
 These member requirements were aligned with the site owner goals of JIA BA BEH to offer a simple-to-use and intuitive member interface.
 
-![image](images/markdownpics/m2.JPG)
+![image](static/images/markdownpics/m2.JPG)
 
 ![](RackMultipart20210617-4-4z6swi_html_3a7241907c76cd1a.png)
 
@@ -130,7 +130,7 @@ Navigation Menu Items: All Recipes, Login, Register.
 
 For the registered member: View All Recipes, Add Recipe, My Profile, Logout
 
-![image](images/markdownpics/m3.JPG)
+![image](static/images/markdownpics/m3.JPG)
 
 ![](RackMultipart20210617-4-4z6swi_html_96cfb72231bb6a23.png)
 
@@ -138,7 +138,7 @@ For the registered member: View All Recipes, Add Recipe, My Profile, Logout
 
 Create, Read, Update and Delete functions need to be ascribed to the creation of recipes in the website. It gives the member control on being able to search, submit, update and delete their own recipes at their request rather than just the ability to read recipes passively.
 
-![image](images/markdownpics/m4.JPG)
+![image](static/images/markdownpics/m4.JPG)
 
 ![](RackMultipart20210617-4-4z6swi_html_5a583baa3c080b60.png)
 
@@ -188,7 +188,7 @@ All buttons are render the the edit\_recipe template in the following fashion:
 
 The use of Flask and Jinja allows pages to pull and display recipe data by liking with recipe.\_id found in the app.py function. Upon submission of the data, the member is redirected to the same page to facilitate more edits.
 
-![image](images/markdownpics/m5.JPG)
+![image](static/images/markdownpics/m5.JPG)
 
 ![](RackMultipart20210617-4-4z6swi_html_d64b6e3cadda76c1.png)
 
@@ -196,7 +196,7 @@ The use of Flask and Jinja allows pages to pull and display recipe data by likin
 
 The **delete** button is strategically places at the bottom of the edit\_recipe template marked in red. This type of alert is highly visual and acts to draw attention to this function.
 
-![image](images/markdownpics/m6.jpg)
+![image](static/images/markdownpics/m6.jpg)
 
 ![](RackMultipart20210617-4-4z6swi_html_648405fe2acfa1d8.png)
 
@@ -422,7 +422,7 @@ SEO optimization will be for subsequent steps
 
 No issues were found with style.css
 
-![image](images/markdownpics/m7.JPG)
+![image](static/images/markdownpics/m7.JPG)
 
 ![](RackMultipart20210617-4-4z6swi_html_77ee3b749b3ec854.jpg)
 
@@ -439,15 +439,15 @@ Post code fix Response from Nu Html Checker: &quot;Document checking completed. 
 1. Ensure code in app.py complies with PEP8 style guide
 2. This is ensured by making sure no callouts from gitpod python linter are present in app.py and that lines of code in app.py to not exceed 79 Characters
 
-![image](images/markdownpics/m8.JPG)
+![image](static/images/markdownpics/m8.JPG)
 
 ![](RackMultipart20210617-4-4z6swi_html_8320a29d807bad09.jpg)
 
-![image](images/markdownpics/m9.JPG)
+![image](static/images/markdownpics/m9.JPG)
 
 ![](RackMultipart20210617-4-4z6swi_html_ffb0c5985abf1d76.jpg)
 
-![image](images/markdownpics/m10.JPG)
+![image](static/images/markdownpics/m10.JPG)
 
 ![](RackMultipart20210617-4-4z6swi_html_2102671f07c1bbbc.jpg)
 
@@ -535,7 +535,7 @@ Own recipe&#39;s full page
 
 ![](RackMultipart20210617-4-4z6swi_html_397a0c25925b561.png)
 
-![image](images/markdownpics/m11.JPG)
+![image](static/images/markdownpics/m11.JPG)
 
 **7.4.7 Update/Editing Recipes (CRUD Functionality)**
 
