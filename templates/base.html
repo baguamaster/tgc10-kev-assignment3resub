@@ -26,7 +26,7 @@
 <body>
     <header>
         <!-- Web Browser Navigation Bar -->
-        <nav class="nav-extended green darken-2 text-shadow">
+        <nav class="nav-extended brown darken-2 text-shadow">
             <div class="nav-wrapper">
                 <a href="{{ url_for('recipes') }}" class="brand-logo web-logo">
                     <img src="{{ url_for('static', filename='images/brand-logo.png') }}" class="responsive-img nav-icon"
@@ -64,9 +64,9 @@
         <ul class="sidenav center-align" id="mobile-demo">
             <li>
                 <a href="{{ url_for('recipes') }}" class="brand-logo web-logo">
-                    <h4 class="green-text text-darken-2">
+                    <h4 class="brown-text text-darken-2">
                         <img src="{{ url_for('static', filename='images/brand-logo-mobile.png') }}"
-                            class="responsive-img nav-icon" alt="Perfect Palate Logo">
+                            class="responsive-img nav-icon" alt="Logo">
                     </h4>
                 </a>
             </li>
@@ -100,7 +100,7 @@
         {% if messages %}
         {% for message in messages %}
         <div class="row flash-message">
-            <h4 class="green lighten-3 center-align">{{ message }}</h4>
+            <h4 class="brown lighten-3 center-align">{{ message }}</h4>
         </div>
         {% endfor %}
         {% endif %}
